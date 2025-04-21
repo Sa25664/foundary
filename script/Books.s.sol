@@ -1,25 +1,14 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.13;
+pragma solidity 0.8.13;
 
-import {Script, console} from "forge-std/Script.sol";
-import "../src/Books.sol";
+import {Script} from "forge-std/Script.sol";
+import {Books} from "../src/Books.sol";
 
 contract DeployBooks is Script {
-    Books public midterm;
-    Books.Book public book;
+    Books public books;
 
-    function setUp() public {
-        vm.broadcast();
-
-        midterm = new Books("Programming Foundry", "Ellan", 100);
-    }
 
     function run() public {
-        log_book();
-    }
-
-    function log_book() internal{
-        book = midterm.get_book();
-        console.log("Author :", book.author);
+        books = new Books("Programming Foundry", "Sai Ganesh", 100);
     }
 }
